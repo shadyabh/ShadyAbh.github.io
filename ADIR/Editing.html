@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<!--
+    Plain-Academic by Vasilios Mavroudis
+    Released under the Simplified BSD License/FreeBSD (2-clause) License.
+    https://github.com/mavroudisv/plain-academic
+-->
+
+<html lang="en">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 25%;
+  padding: 5px;
+}
+.column_30 {
+  float: left;
+  width: 30%;
+  padding: 5px;
+}
+.column_20 {
+  float: left;
+  width: 20%;
+  padding: 5px;
+}
+
+.img-center { 
+  display:block;
+  margin:0 auto;
+}
+
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+button {
+  width: 100px;
+  height: 50px;
+  border-radius: 20px;
+}
+figcaption {
+    background-color: #222;
+    color: #fff;
+    font: italic smaller sans-serif;
+    padding: 3px;
+    text-align: center;
+}
+.crop {
+	width: 200px;
+	height: 150px;
+	overflow: hidden;
+}
+</style>
+<head>
+  <title>ADIR: Adaptive Diffusion for Image Reconstruction</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+
+<!-- Navigation -->
+	<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+	  <div class="container">
+		<div class="navbar-header">
+		  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		  <ul class="nav navbar-nav">
+				<li><a href="index.html">Home</a></li>
+			  <li><a href="SD_SRx4.html">SRx4 - Stable Diffusion</a></li>
+			  <li><a href="GD_SRx4.html">SRx4 - Guided Diffusion</a></li>
+			  <li><a href="GD_SRx8.html">SRx8 - Guided Diffusion</a></li>
+			  <li><a href="Deblurring.html">Deblurring - Guided Diffusion</a></li> 
+			  <li><a href="Editing.html">Text-based Editing - Stable Diffusion</a></li>  
+		  </ul>
+		</div>
+	  </div>
+	</nav>
+  
+  <!-- Page Content -->
+    <div class="container">
+    		<br>
+        <div class="row">
+            <!-- Entries Column -->
+           <p style="font-family: Arial; font-size:30px"><b> Text-based editing using Stable Diffusion</b></p><br>	
+        </div>
+
+        <div class="row">
+            <!-- Entries Column -->
+           <p style="font-family: Arial; font-size:14px"><b> Prompt: "Africa"</p>
+        </div>
+   			<div class="row" justify-content=center>
+   				<div class="column">
+					  <figure>
+						</figure>
+				  </div>
+				  <div class="column">
+					  <figure>
+						<img src="Images/Editing/leopard_GT.png" alt="GT" style="width:100%">
+						<figcaption>Ground Truth</figcaption>
+						</figure>
+				  </div>
+				  <div class="column">
+					  <figure>
+						<img src="Images/Editing/leopard_inpaint_y.png" alt="GT" style="width:100%">
+						<figcaption>Masked</figcaption>
+						</figure>
+				  </div>
+				</div>
+
+				<div class="row">
+					<div class="column_20">
+					  <figure>
+						</figure>
+				  </div>
+				  <div class="column_30">
+					  <figure>
+						<img src="Images/Editing/leopard_Africa_LDM_config0_seed65667.png" alt="GT" style="width:100%">
+						<figcaption>Stable Diffusion</figcaption>
+						</figure>
+				  </div>
+			  	<div class="column_30">
+					  <figure>
+						<img src="Images/Editing/leopard_Africa_LDM_config0_seed132902.png" alt="GT" style="width:100%">
+						<figcaption>Stable Diffusion</figcaption>
+						</figure>
+				  </div>
+				  <div class="column_20">
+					  <figure>
+						</figure>
+				  </div>
+			  </div>
+			  <div class="row">
+			  	<div class="column_20">
+					  <figure>
+						</figure>
+				  </div>
+				  <div class="column_30">
+					  <figure>
+						<img src="Images/Editing/leopard_Africa_LDM_ADIR_seed65667.png" alt="GT" style="width:100%">
+						<figcaption>ADIR (ours)</figcaption>
+						</figure>
+				  </div>
+			  	<div class="column_30">
+					  <figure>
+						<img src="Images/Editing/leopard_Africa_LDM_ADIR_seed132902.png" alt="GT" style="width:100%">
+						<figcaption>ADIR (ours)</figcaption>
+						</figure>
+				  </div>
+				  <div class="column_20">
+					  <figure>
+						</figure>
+				  </div>
+			  </div>
+			  <hr />
+			  <div class="row">
+            <!-- Entries Column -->
+           <p style="font-family: Arial; font-size:14px"><b> Prompt: "An elephant walking"</p>
+        </div>
+   			<div class="row" justify-content=center>
+   				<div class="column">
+					  <figure>
+						</figure>
+				  </div>
+				  <div class="column">
+					  <figure>
+						<img src="Images/Editing/dog_on_bench_GT.png" alt="GT" style="width:100%">
+						<figcaption>Ground Truth</figcaption>
+						</figure>
+				  </div>
+				  <div class="column">
+					  <figure>
+						<img src="Images/Editing/dog_on_bench_inpaint_y.png" alt="GT" style="width:100%">
+						<figcaption>Masked</figcaption>
+						</figure>
+				  </div>
+				</div>
+
+				<div class="row">
+					<div class="column_20">
+					  <figure>
+						</figure>
+				  </div>
+				  <div class="column_30">
+					  <figure>
+						<img src="Images/Editing/dog_on_bench_An_elephant_walking_LDM_config0_seed320728.png" alt="GT" style="width:100%">
+						<figcaption>Stable Diffusion</figcaption>
+						</figure>
+				  </div>
+			  	<div class="column_30">
+					  <figure>
+						<img src="Images/Editing/dog_on_bench_An_elephant_walking_LDM_config0_seed947384.png" alt="GT" style="width:100%">
+						<figcaption>Stable Diffusion</figcaption>
+						</figure>
+				  </div>
+				  <div class="column_20">
+					  <figure>
+						</figure>
+				  </div>
+			  </div>
+			  <div class="row">
+			  	<div class="column_20">
+					  <figure>
+						</figure>
+				  </div>
+				  <div class="column_30">
+					  <figure>
+						<img src="Images/Editing/dog_on_bench_An_elephant_walking_LDM_ADIR_seed320728.png" alt="GT" style="width:100%">
+						<figcaption>ADIR (ours)</figcaption>
+						</figure>
+				  </div>
+			  	<div class="column_30">
+					  <figure>
+						<img src="Images/Editing/dog_on_bench_An_elephant_walking_LDM_ADIR_seed947384.png" alt="GT" style="width:100%">
+						<figcaption>ADIR (ours)</figcaption>
+						</figure>
+				  </div>
+				  <div class="column_20">
+					  <figure>
+						</figure>
+				  </div>
+			  </div>
+			  <hr />
+			  <div class="row">
+            <!-- Entries Column -->
+           <p style="font-family: Arial; font-size:14px"><b> Prompt: "a beautiful frozen lake_between mountains in the snow"</p>
+        </div>
+   			<div class="row" justify-content=center>
+   				<div class="column">
+					  <figure>
+						</figure>
+				  </div>
+				  <div class="column">
+					  <figure>
+						<img src="Images/Editing/zOST_002_GT.png" alt="GT" style="width:100%">
+						<figcaption>Ground Truth</figcaption>
+						</figure>
+				  </div>
+				  <div class="column">
+					  <figure>
+						<img src="Images/Editing/zOST_002_inpaint_y.png" alt="GT" style="width:100%">
+						<figcaption>Masked</figcaption>
+						</figure>
+				  </div>
+				</div>
+
+				<div class="row">
+					<div class="column_20">
+					  <figure>
+						</figure>
+				  </div>
+				  <div class="column_30">
+					  <figure>
+						<img src="Images/Editing/zOST_002_a_beautiful_frozen_lake_between_mountains_in_the_snow_LDM_config0_seed338710.png" alt="GT" style="width:100%">
+						<figcaption>Stable Diffusion</figcaption>
+						</figure>
+				  </div>
+			  	<div class="column_30">
+					  <figure>
+						<img src="Images/Editing/zOST_002_a_beautiful_frozen_lake_between_mountains_in_the_snow_LDM_config0_seed936135.png" alt="GT" style="width:100%">
+						<figcaption>Stable Diffusion</figcaption>
+						</figure>
+				  </div>
+				  <div class="column_20">
+					  <figure>
+						</figure>
+				  </div>
+			  </div>
+			  <div class="row">
+			  	<div class="column_20">
+					  <figure>
+						</figure>
+				  </div>
+				  <div class="column_30">
+					  <figure>
+						<img src="Images/Editing/zOST_002_a_beautiful_frozen_lake_between_mountains_in_the_snow_LDM_ADIR__seed338710.png" alt="GT" style="width:100%">
+						<figcaption>ADIR (ours)</figcaption>
+						</figure>
+				  </div>
+			  	<div class="column_30">
+					  <figure>
+						<img src="Images/Editing/zOST_002_a_beautiful_frozen_lake_between_mountains_in_the_snow_LDM_ADIR__seed936135.png" alt="GT" style="width:100%">
+						<figcaption>ADIR (ours)</figcaption>
+						</figure>
+				  </div>
+				  <div class="column_20">
+					  <figure>
+						</figure>
+				  </div>
+			  </div>
+			  <hr />
+			  <div class="row">
+            <!-- Entries Column -->
+           <p style="font-family: Arial; font-size:14px"><b> Prompt: "A bridge going to the beach"</p>
+        </div>
+   			<div class="row" justify-content=center>
+   				<div class="column">
+					  <figure>
+						</figure>
+				  </div>
+				  <div class="column">
+					  <figure>
+						<img src="Images/Editing/0876_GT.png" alt="GT" style="width:100%">
+						<figcaption>Ground Truth</figcaption>
+						</figure>
+				  </div>
+				  <div class="column">
+					  <figure>
+						<img src="Images/Editing/0876_inpaint_y.png" alt="GT" style="width:100%">
+						<figcaption>Masked</figcaption>
+						</figure>
+				  </div>
+				</div>
+
+				<div class="row">
+					<div class="column_20">
+					  <figure>
+						</figure>
+				  </div>
+				  <div class="column_30">
+					  <figure>
+						<img src="Images/Editing/0876_a_bridge_going_to_the_beach_LDM_config0_seed208950.png" alt="GT" style="width:100%">
+						<figcaption>Stable Diffusion</figcaption>
+						</figure>
+				  </div>
+			  	<div class="column_30">
+					  <figure>
+						<img src="Images/Editing/0876_a_bridge_going_to_the_beach_LDM_config0_seed483306.png" alt="GT" style="width:100%">
+						<figcaption>Stable Diffusion</figcaption>
+						</figure>
+				  </div>
+				  <div class="column_20">
+					  <figure>
+						</figure>
+				  </div>
+			  </div>
+			  <div class="row">
+			  	<div class="column_20">
+					  <figure>
+						</figure>
+				  </div>
+				  <div class="column_30">
+					  <figure>
+						<img src="Images/Editing/0876_a_bridge_going_to_the_beach_LDM_ADIR_seed208950.png" alt="GT" style="width:100%">
+						<figcaption>ADIR (ours)</figcaption>
+						</figure>
+				  </div>
+			  	<div class="column_30">
+					  <figure>
+						<img src="Images/Editing/0876_a_bridge_going_to_the_beach_LDM_ADIR_seed483306.png" alt="GT" style="width:100%">
+						<figcaption>ADIR (ours)</figcaption>
+						</figure>
+				  </div>
+				  <div class="column_20">
+					  <figure>
+						</figure>
+				  </div>
+			  </div>
+			  <hr />
+			  <div class="row">
+            <!-- Entries Column -->
+           <p style="font-family: Arial; font-size:14px"><b> Prompt: "Taj Mahal"</p>
+        </div>
+   			<div class="row" justify-content=center>
+   				<div class="column">
+					  <figure>
+						</figure>
+				  </div>
+				  <div class="column">
+					  <figure>
+						<img src="Images/Editing/0879_GT.png" alt="GT" style="width:100%">
+						<figcaption>Ground Truth</figcaption>
+						</figure>
+				  </div>
+				  <div class="column">
+					  <figure>
+						<img src="Images/Editing/0879_inpaint_y.png" alt="GT" style="width:100%">
+						<figcaption>Masked</figcaption>
+						</figure>
+				  </div>
+				</div>
+
+				<div class="row">
+					<div class="column_20">
+					  <figure>
+						</figure>
+				  </div>
+				  <div class="column_30">
+					  <figure>
+						<img src="Images/Editing/0879_Taj_Mahal_LDM_config0_seed702375.png" alt="GT" style="width:100%">
+						<figcaption>Stable Diffusion</figcaption>
+						</figure>
+				  </div>
+			  	<div class="column_30">
+					  <figure>
+						<img src="Images/Editing/0879_Taj_Mahal_LDM_config0_seed853692.png" alt="GT" style="width:100%">
+						<figcaption>Stable Diffusion</figcaption>
+						</figure>
+				  </div>
+				  <div class="column_20">
+					  <figure>
+						</figure>
+				  </div>
+			  </div>
+			  <div class="row">
+			  	<div class="column_20">
+					  <figure>
+						</figure>
+				  </div>
+				  <div class="column_30">
+					  <figure>
+						<img src="Images/Editing/0879_Taj_Mahal_LDM_ADIR_seed702375.png" alt="GT" style="width:100%">
+						<figcaption>ADIR (ours)</figcaption>
+						</figure>
+				  </div>
+			  	<div class="column_30">
+					  <figure>
+						<img src="Images/Editing/0879_Taj_Mahal_LDM_ADIR_seed853692.png" alt="GT" style="width:100%">
+						<figcaption>ADIR (ours)</figcaption>
+						</figure>
+				  </div>
+				  <div class="column_20">
+					  <figure>
+						</figure>
+				  </div>
+			  </div>
+			  <hr />
+			  <div class="row">
+            <!-- Entries Column -->
+           <p style="font-family: Arial; font-size:14px"><b> Prompt: "A fox sitting in the middle of desert"</p>
+        </div>
+   			<div class="row" justify-content=center>
+   				<div class="column">
+					  <figure>
+						</figure>
+				  </div>
+				  <div class="column">
+					  <figure>
+						<img src="Images/Editing/0862_GT.png" alt="GT" style="width:100%">
+						<figcaption>Ground Truth</figcaption>
+						</figure>
+				  </div>
+				  <div class="column">
+					  <figure>
+						<img src="Images/Editing/0862_inpaint_y.png" alt="GT" style="width:100%">
+						<figcaption>Masked</figcaption>
+						</figure>
+				  </div>
+				</div>
+
+				<div class="row">
+					<div class="column_20">
+					  <figure>
+						</figure>
+				  </div>
+				  <div class="column_30">
+					  <figure>
+						<img src="Images/Editing/0862_a_fox_sitting_in_the_middle_of_desert_LDM_config0_seed416424.png" alt="GT" style="width:100%">
+						<figcaption>Stable Diffusion</figcaption>
+						</figure>
+				  </div>
+			  	<div class="column_30">
+					  <figure>
+						<img src="Images/Editing/0862_a_fox_sitting_in_the_middle_of_desert_LDM_config0_seed453297.png" alt="GT" style="width:100%">
+						<figcaption>Stable Diffusion</figcaption>
+						</figure>
+				  </div>
+				  <div class="column_20">
+					  <figure>
+						</figure>
+				  </div>
+			  </div>
+			  <div class="row">
+			  	<div class="column_20">
+					  <figure>
+						</figure>
+				  </div>
+				  <div class="column_30">
+					  <figure>
+						<img src="Images/Editing/0862_a_fox_sitting_in_the_middle_of_desert_LDM_ADIR__seed416424.png" alt="GT" style="width:100%">
+						<figcaption>ADIR (ours)</figcaption>
+						</figure>
+				  </div>
+			  	<div class="column_30">
+					  <figure>
+						<img src="Images/Editing/0862_a_fox_sitting_in_the_middle_of_desert_LDM_ADIR__seed453297.png" alt="GT" style="width:100%">
+						<figcaption>ADIR (ours)</figcaption>
+						</figure>
+				  </div>
+				  <div class="column_20">
+					  <figure>
+						</figure>
+				  </div>
+			  </div>
+			  <hr />
+    </div>
+    <!-- /.container -->
+
+    
+</body>
+
+</html>
