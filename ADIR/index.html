@@ -138,10 +138,7 @@ h4 {
                 <div style="margin-top:3%; text-align:justify;">  
 					<h2> Abstract </h2>
 					<p style="font-family: Arial; font-size:15px; align: left">
-						In recent years, denoising diffusion models have demonstrated outstanding image generation performance. 
-The information on natural images captured by these models is useful for many image reconstruction applications,
-where the task is to restore a clean image from its degraded observations. 
-In this work, we propose a conditional sampling scheme that exploits the prior learned by diffusion models while retaining agreement with the observations. We then combine it with a novel approach for adapting pre-trained diffusion denoising networks to their input. We examine two adaption strategies: the first uses only the degraded image, while the second, which we advocate, is performed using images that are "nearest neighbors" of the degraded image, retrieved from a diverse dataset using an off-the-shelf visual-language model. To evaluate our method, we test it on two state-of-the-art publicly available diffusion models, Stable Diffusion and Guided Diffusion. We show that our proposed `adaptive diffusion for image reconstruction' (ADIR) approach achieves a significant improvement in the super-resolution, deblurring, and text-based editing tasks.
+						In recent years, denoising diffusion models have demonstrated outstanding image generation performance. The information on natural images captured by these models is useful for many image reconstruction applications, where the task is to restore a clean image from its degraded observations. In this work, we propose a conditional sampling scheme that exploits the prior learned by diffusion models while retaining agreement with the observations. We then combine it with a novel approach for adapting pre-trained diffusion denoising networks to their input. We examine two adaption strategies: the first uses only the degraded image, while the second, which we advocate, is performed using images that are "nearest neighbors" of the degraded image, retrieved from a diverse dataset using an off-the-shelf visual-language model. To evaluate our method, we test it on two state-of-the-art publicly available diffusion models, Stable Diffusion and Guided Diffusion. We show that our proposed `adaptive diffusion for image reconstruction' (ADIR) approach achieves a significant improvement in the super-resolution, deblurring, and text-based editing tasks.
 						</p><br>					   				
 						<center><img src="ADIR_files/teaser.png" alt="teaser" style="width:100%"></center>				  
 					<p style="font-family: Arial; font-size:15px; align: left">
@@ -149,7 +146,17 @@ In this work, we propose a conditional sampling scheme that exploits the prior l
 					</p>				  				  
                 </div>
             </div> 
-</div>
+
+			<div class="col-md-12">    
+        <h2> Overview </h2>							
+				<div class="row">
+					<figure>
+					<center><img src="ADIR_files/diagram.svg" alt="GT" style="width:100%">
+					</figure>				
+					</div>
+			</div>
+
+
 			<div class="col-md-12">    
                 <h2 id="GD_SRx4"><a href="GD_SRx4.html">Super Resolution x4 - Guided Diffusion</a></h2>								
 				<div class="row">
