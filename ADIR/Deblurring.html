@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<!--
+    Plain-Academic by Vasilios Mavroudis
+    Released under the Simplified BSD License/FreeBSD (2-clause) License.
+    https://github.com/mavroudisv/plain-academic
+-->
+
+<html lang="en">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 25%;
+  padding: 5px;
+}
+
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+button {
+  width: 100px;
+  height: 50px;
+  border-radius: 20px;
+}
+figcaption {
+    background-color: #222;
+    color: #fff;
+    font: italic smaller sans-serif;
+    padding: 3px;
+    text-align: center;
+}
+.crop {
+	width: 200px;
+	height: 150px;
+	overflow: hidden;
+}
+</style>
+<head>
+  <title>ADIR: Adaptive Diffusion for Image Reconstruction</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+
+<!-- Navigation -->
+	<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+	  <div class="container">
+		<div class="navbar-header">
+		  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		  <ul class="nav navbar-nav">
+				<li><a href="index.html">Home</a></li>
+			  <li><a href="SD_SRx4.html">SRx4 - Stable Diffusion</a></li>
+			  <li><a href="GD_SRx4.html">SRx4 - Guided Diffusion</a></li>
+			  <li><a href="GD_SRx8.html">SRx8 - Guided Diffusion</a></li>
+			  <li><a href="Deblurring.html">Deblurring - Guided Diffusion</a></li> 
+			  <li><a href="Editing.html">Text-based Editing - Stable Diffusion</a></li> 
+		  </ul>
+		</div>
+	  </div>
+	</nav>
+  
+  <!-- Page Content -->
+    <div class="container">
+    		<br>
+        <div class="row">
+            <!-- Entries Column -->
+           <p style="font-family: Arial; font-size:30px"><b> Uniform deblurring using Guided Diffusion</b></p><br>	
+        </div>
+   			<div class="row">
+				  <div class="column">
+					  <figure>
+						<img src="Images/GD512_deblur/00003_GT.png" alt="GT" style="width:100%">
+						<figcaption>Ground Truth</figcaption>
+						</figure>
+				  </div>
+				  <div class="column">
+					  <figure>
+						<img src="Images/GD512_deblur/00003_deblur_y.png" alt="GT" style="width:100%">
+						<figcaption>Blurry</figcaption>
+						</figure>
+				  </div>
+				  <div class="column">
+					  <figure>
+						<img src="Images/GD512_deblur/00003_deblur_config0.png" alt="GT" style="width:100%">
+						<figcaption>Guided Diffusion</figcaption>
+						</figure>
+				  </div>
+			  	<div class="column">
+					  <figure>
+						<img src="Images/GD512_deblur/00003_deblur_ADIR.png" alt="GT" style="width:100%">
+						<figcaption>ADIR (Ours)</figcaption>
+						</figure>
+				  </div>
+			  </div>
+			  <div class="row">
+				  <div class="column">
+					  <figure>
+						<img src="Images/GD512_deblur/00006_GT.png" alt="GT" style="width:100%">
+						<figcaption>Ground Truth</figcaption>
+						</figure>
+				  </div>
+				  <div class="column">
+					  <figure>
+						<img src="Images/GD512_deblur/00006_deblur_y.png" alt="GT" style="width:100%">
+						<figcaption>Blurry</figcaption>
+						</figure>
+				  </div>
+				  <div class="column">
+					  <figure>
+						<img src="Images/GD512_deblur/00006_deblur_config0.png" alt="GT" style="width:100%">
+						<figcaption>Guided Diffusion</figcaption>
+						</figure>
+				  </div>
+			  	<div class="column">
+					  <figure>
+						<img src="Images/GD512_deblur/00006_deblur_ADIR.png" alt="GT" style="width:100%">
+						<figcaption>ADIR (Ours)</figcaption>
+						</figure>
+				  </div>
+			  </div>
+			  <div class="row">
+				  <div class="column">
+					  <figure>
+						<img src="Images/GD512_deblur/00043_GT.png" alt="GT" style="width:100%">
+						<figcaption>Ground Truth</figcaption>
+						</figure>
+				  </div>
+				  <div class="column">
+					  <figure>
+						<img src="Images/GD512_deblur/00043_deblur_y.png" alt="GT" style="width:100%">
+						<figcaption>Blurry</figcaption>
+						</figure>
+				  </div>
+				  <div class="column">
+					  <figure>
+						<img src="Images/GD512_deblur/00043_deblur_config0.png" alt="GT" style="width:100%">
+						<figcaption>Guided Diffusion</figcaption>
+						</figure>
+				  </div>
+			  	<div class="column">
+					  <figure>
+						<img src="Images/GD512_deblur/00043_deblur_ADIR.png" alt="GT" style="width:100%">
+						<figcaption>ADIR (Ours)</figcaption>
+						</figure>
+				  </div>
+			  </div>
+			  <div class="row">
+				  <div class="column">
+					  <figure>
+						<img src="Images/GD512_deblur/00033_GT.png" alt="GT" style="width:100%">
+						<figcaption>Ground Truth</figcaption>
+						</figure>
+				  </div>
+				  <div class="column">
+					  <figure>
+						<img src="Images/GD512_deblur/00033_deblur_y.png" alt="GT" style="width:100%">
+						<figcaption>Blurry</figcaption>
+						</figure>
+				  </div>
+				  <div class="column">
+					  <figure>
+						<img src="Images/GD512_deblur/00033_deblur_config0.png" alt="GT" style="width:100%">
+						<figcaption>Guided Diffusion</figcaption>
+						</figure>
+				  </div>
+			  	<div class="column">
+					  <figure>
+						<img src="Images/GD512_deblur/00033_deblur_ADIR.png" alt="GT" style="width:100%">
+						<figcaption>ADIR (Ours)</figcaption>
+						</figure>
+				  </div>
+			  </div>
+			  <div class="row">
+				  <div class="column">
+					  <figure>
+						<img src="Images/GD512_deblur/00039_GT.png" alt="GT" style="width:100%">
+						<figcaption>Ground Truth</figcaption>
+						</figure>
+				  </div>
+				  <div class="column">
+					  <figure>
+						<img src="Images/GD512_deblur/00039_deblur_y.png" alt="GT" style="width:100%">
+						<figcaption>Blurry</figcaption>
+						</figure>
+				  </div>
+				  <div class="column">
+					  <figure>
+						<img src="Images/GD512_deblur/00039_deblur_config0.png" alt="GT" style="width:100%">
+						<figcaption>Guided Diffusion</figcaption>
+						</figure>
+				  </div>
+			  	<div class="column">
+					  <figure>
+						<img src="Images/GD512_deblur/00039_deblur_ADIR.png" alt="GT" style="width:100%">
+						<figcaption>ADIR (Ours)</figcaption>
+						</figure>
+				  </div>
+			  </div>
+			  <div class="row">
+				  <div class="column">
+					  <figure>
+						<img src="Images/GD512_deblur/00046_GT.png" alt="GT" style="width:100%">
+						<figcaption>Ground Truth</figcaption>
+						</figure>
+				  </div>
+				  <div class="column">
+					  <figure>
+						<img src="Images/GD512_deblur/00046_deblur_y.png" alt="GT" style="width:100%">
+						<figcaption>Blurry</figcaption>
+						</figure>
+				  </div>
+				  <div class="column">
+					  <figure>
+						<img src="Images/GD512_deblur/00046_deblur_config0.png" alt="GT" style="width:100%">
+						<figcaption>Guided Diffusion</figcaption>
+						</figure>
+				  </div>
+			  	<div class="column">
+					  <figure>
+						<img src="Images/GD512_deblur/00046_deblur_ADIR.png" alt="GT" style="width:100%">
+						<figcaption>ADIR (Ours)</figcaption>
+						</figure>
+				  </div>
+			  </div>
+			  <br>	
+			  <div class="row">
+            <!-- Entries Column -->
+           <p style="font-family: Arial; font-size:30px"><b> Gaussian deblurring using Guided Diffusion</b></p><br>
+        </div>
+        <div class="row">
+				  <div class="column">
+					  <figure>
+						<img src="Images/GD_Gauss_deblur/00011_GT.png" alt="GT" style="width:100%">
+						<figcaption>Ground Truth</figcaption>
+						</figure>
+				  </div>
+				  <div class="column">
+					  <figure>
+						<img src="Images/GD_Gauss_deblur/00011_deblur_Gaussian_y.png" alt="GT" style="width:100%">
+						<figcaption>Blurry</figcaption>
+						</figure>
+				  </div>
+				  <div class="column">
+					  <figure>
+						<img src="Images/GD_Gauss_deblur/00011_LS_deblur_Gaussian_config0.png" alt="GT" style="width:100%">
+						<figcaption>Guided Diffusion</figcaption>
+						</figure>
+				  </div>
+			  	<div class="column">
+					  <figure>
+						<img src="Images/GD_Gauss_deblur/00011_deblur_Gaussian_ADIR.png" alt="GT" style="width:100%">
+						<figcaption>ADIR (Ours)</figcaption>
+						</figure>
+				  </div>
+			  </div>
+			  <div class="row">
+				  <div class="column">
+					  <figure>
+						<img src="Images/GD_Gauss_deblur/00026_GT.png" alt="GT" style="width:100%">
+						<figcaption>Ground Truth</figcaption>
+						</figure>
+				  </div>
+				  <div class="column">
+					  <figure>
+						<img src="Images/GD_Gauss_deblur/00026_deblur_Gaussian_y.png" alt="GT" style="width:100%">
+						<figcaption>Blurry</figcaption>
+						</figure>
+				  </div>
+				  <div class="column">
+					  <figure>
+						<img src="Images/GD_Gauss_deblur/00026_LS_deblur_Gaussian_config0.png" alt="GT" style="width:100%">
+						<figcaption>Guided Diffusion</figcaption>
+						</figure>
+				  </div>
+			  	<div class="column">
+					  <figure>
+						<img src="Images/GD_Gauss_deblur/00026_deblur_Gaussian_ADIR.png" alt="GT" style="width:100%">
+						<figcaption>ADIR (Ours)</figcaption>
+						</figure>
+				  </div>
+			  </div>
+			  <div class="row">
+				  <div class="column">
+					  <figure>
+						<img src="Images/GD_Gauss_deblur/00044_GT.png" alt="GT" style="width:100%">
+						<figcaption>Ground Truth</figcaption>
+						</figure>
+				  </div>
+				  <div class="column">
+					  <figure>
+						<img src="Images/GD_Gauss_deblur/00044_deblur_Gaussian_y.png" alt="GT" style="width:100%">
+						<figcaption>Blurry</figcaption>
+						</figure>
+				  </div>
+				  <div class="column">
+					  <figure>
+						<img src="Images/GD_Gauss_deblur/00044_LS_deblur_Gaussian_config0.png" alt="GT" style="width:100%">
+						<figcaption>Guided Diffusion</figcaption>
+						</figure>
+				  </div>
+			  	<div class="column">
+					  <figure>
+						<img src="Images/GD_Gauss_deblur/00044_deblur_Gaussian_ADIR.png" alt="GT" style="width:100%">
+						<figcaption>ADIR (Ours)</figcaption>
+						</figure>
+				  </div>
+			  </div>
+			  <div class="row">
+				  <div class="column">
+					  <figure>
+						<img src="Images/GD_Gauss_deblur/00045_GT.png" alt="GT" style="width:100%">
+						<figcaption>Ground Truth</figcaption>
+						</figure>
+				  </div>
+				  <div class="column">
+					  <figure>
+						<img src="Images/GD_Gauss_deblur/00045_deblur_Gaussian_y.png" alt="GT" style="width:100%">
+						<figcaption>Blurry</figcaption>
+						</figure>
+				  </div>
+				  <div class="column">
+					  <figure>
+						<img src="Images/GD_Gauss_deblur/00045_LS_deblur_Gaussian_config0.png" alt="GT" style="width:100%">
+						<figcaption>Guided Diffusion</figcaption>
+						</figure>
+				  </div>
+			  	<div class="column">
+					  <figure>
+						<img src="Images/GD_Gauss_deblur/00045_deblur_Gaussian_ADIR.png" alt="GT" style="width:100%">
+						<figcaption>ADIR (Ours)</figcaption>
+						</figure>
+				  </div>
+			  </div>
+    </div>
+    <!-- /.container -->
+
+    
+</body>
+
+</html>

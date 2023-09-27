@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shady Abu-Hussein</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to  CSS file for styling -->
+    <style>
+        /* Add custom inline styles here for quick enhancements */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 36px;
+            margin: 0;
+        }
+
+        header h2 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        section h2 {
+            font-size: 24px;
+            margin-top: 0;
+        }
+
+        section p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .profile-image {
+            max-width: 200px; /* Adjust the size of your profile image */
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: block;
+        }
+        /* Add this CSS to your existing stylesheet or create a new one */
+.publication-list {
+    list-style: none;
+    padding: 0;
+}
+.responsive-image {
+    max-width: 100%;
+    height: auto;
+}
+.publication-item {
+    display: flex;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.publication-image {
+    flex: 1;
+    margin-right: 10px;
+    margin-left: -50px;
+    max-width: 300px; /* Adjust the image width as needed */
+}
+
+.publication-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.publication-details {
+    flex: 3;
+}
+
+/* Add more CSS styles as needed for further customization */
+
+
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Shady Abu-Hussein</h1>
+        <h2>PhD Student at Tel Aviv University</h2>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#publications">Publications</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="about" class="container">
+        <img class="profile-image" src="profile_pic.jpg" alt="Shady Abu-Hussein">
+        <h2>About Me</h2>
+        <p>Welcome to my personal website! I'm a passionate Ph.D. student at Tel Aviv University, specializing in deep learning, with a focus on inverse problems, generative modeling, signal processing, and computer vision. Additionally, I am a research scientist at Intel Corporation.</p>
+    </section>
+
+    <section id="research" class="container">
+        <h2>Research Interests</h2>
+        <p>My primary research interests revolve around improving deep learning methodologies through the integration of signal processing techniques, particularly in the areas of inverse problems and generative modeling. Additionally, I am actively engaged in the development of state-of-the-art real-time video super-resolution algorithms at Intel Corporation.
+        </p>
+    </section>
+
+    <section id="contact" class="container">
+        <h2>Contact Information</h2>
+        <p>Email: <a href="mailto:shady.abh@gmail.com">shady.abh@gmail.com</a></p>
+        <p><a href="https://scholar.google.com/citations?user=FZYAWe4AAAAJ" target="_blank">[Google Scholar]</a> <a href="https://www.linkedin.com/in/shady-abu-hussein-919a69104/" target="_blank"> [LinkedIn]</a><a href="https://twitter.com/ShadyAbh" target="_blank"> [Twitter]</a> <a href="https://github.com/shadyabh/" target="_blank"> [GitHub]</a></p>
+    </section>
+
+
+	<section id="publications" class="container">
+	    <h2>Publications</h2>
+	    <ol>	    
+	    <ul class="publication-list">
+            <li class="publication-item">
+            <div class="publication-image">
+                <img src="./Teasers/UDPM.png" alt="UDPM", class="responsive-image">
+            </div>
+            <div class="publication-details">
+                <h4>UDPM: Upsampling Diffusion Probabilistic Models</h4>
+                <p>Shady Abu-Hussein, and Raja Giryes</p>
+                <p>arxiv, 2023 </p>
+                <a href="https://arxiv.org/abs/2305.16269">[Paper]</a><a href="https://github.com/shadyabh/UDPM">[Code - comming soon]</a>
+                </div>
+            </li>
+            <li class="publication-item">
+            <div class="publication-image">
+                <img src="./Teasers/ADIR.png" alt="ADIR", class="responsive-image">
+            </div>
+            <div class="publication-details">
+                <h4>ADIR: Adaptive Diffusion for Image Reconstruction</h4>
+                <p>Shady Abu-Hussein, Tom Tirer and, Raja Giryes</p>
+                <p>arxiv, 2023 </p>
+                <a href="https://arxiv.org/abs/2212.03221">[Paper]</a><a href="https://shadyabh.github.io/ADIR/">[Website]</a><a href="https://github.com/shadyabh/ADIR">[Code - comming soon]</a>
+                </div>
+            </li>
+            <li class="publication-item">
+            <div class="publication-image">
+                <img src="./Teasers/ProCST.png" alt="ProCST", class="responsive-image">
+            </div>
+            <div class="publication-details">
+                <h4>Procst: boosting semantic segmentation using progressive cyclic style-transfer</h4>
+                <p>Shahaf Ettedgui, Shady Abu-Hussein, and Raja Giryes</p>
+                <p>arxiv, 2023 </p>
+                <a href="https://arxiv.org/abs/2204.11891">[Paper]</a>
+                </div>
+            </li>
+            <li class="publication-item">
+            <div class="publication-image">
+                <img src="./Teasers/BrAD.png" alt="BrAD", class="responsive-image">
+            </div>
+            <div class="publication-details">
+                <h4>Unsupervised Domain Generalization by Learning a Bridge Across Domains <t style="color: blue">(Oral)</t></h4>
+                <p>Sivan Harary, Eli Schwartz, Assaf Arbelle, Peter Staar, Shady Abu-Hussein, Elad Amrani, Roei Herzig, Amit Alfassy, Raja Giryes, Hilde Kuehne, Dina Katabi, Kate Saenko, Rogerio Feris, and Leonid Karlinsky</p>
+                <p>CVPR, 2022 </p>
+                <a href="https://arxiv.org/abs/2112.02300">[Paper]</a><a href="https://github.com/leokarlin/BrAD">[Code]</a>
+                </div>
+            </li>
+            <li class="publication-item">
+            <div class="publication-image">
+                <img src="./Teasers/PGSURE.png" alt="pGSURE", class="responsive-image">
+            </div>
+            <div class="publication-details">
+                <h4>Image Restoration by Deep Projected GSURE</h4>
+                <p>Shady Abu-Hussein, Tom Tirer, Se Young Chun, Yonina C. Eldar, and Raja Giryes</p>
+                <p>WACV, 2022 </p>
+                <a href="https://arxiv.org/abs/2102.02485">[Paper]</a><a href="https://github.com/shadyabh/PGSURE">[Code]</a>
+                </div>
+            </li>
+            <li class="publication-item">
+            <div class="publication-image">
+                <img src="./Teasers/corrFilter.png" alt="corrFilter", class="responsive-image">
+            </div>
+            <div class="publication-details">
+                <h4>Correction filter for single image super-resolution: Robustifying off-the-shelf deep super-resolvers <t style="color: blue">(Oral and Best Paper Award Nominee)</t></h4>
+                <p>Shady Abu-Hussein, Tom Tirer, Se Young Chun, Yonina C. Eldar, and Raja Giryes</p>
+                <p>CVPR, 2020 </p>
+                <a href="https://arxiv.org/abs/1912.00157">[Paper]</a><a href="https://github.com/shadyabh/Correction-Filter">[Code]</a>
+                </div>
+            </li>
+            <li class="publication-item">
+            <div class="publication-image">
+                <img src="./Teasers/IAGAN.png" alt="IAGAN", class="responsive-image">
+            </div>
+            <div class="publication-details">
+                <h4>Image-adaptive GAN based reconstruction</h4>
+                <p>Shady Abu Hussein*, Tom Tirer*, and Raja Giryes</p>
+                <p>AAAI, 2020 </p>
+                <a href="https://arxiv.org/abs/1906.05284">[Paper]</a><a href="https://github.com/shadyabh/IAGAN">[Code]</a>
+                </div>
+            </li>
+        </ul>
+	</section>
+
+
+    <!-- <footer>
+        <div class="container">
+            <p>&copy; 2023 Shady Abu-Hussein</p>
+        </div>
+    </footer> -->
+</body>
+</html>
+

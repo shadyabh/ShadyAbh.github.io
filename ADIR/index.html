@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><style>
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 25%;
+  padding: 5px;
+}
+
+.column_teaser {
+  padding-left: 100px;
+  float: left;
+  width: 33%;
+  padding: 10px;
+}
+
+.column_doubledip {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+.column_vid_0 {
+  float: left;
+  width: 25%;
+  padding: 5px;
+}
+
+.column_vid_1 {
+  float: left;
+  width: 50%;
+  padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+button {
+  width: 250px;
+  height: 50px;
+  border-radius: 20px;
+}
+figcaption {
+    background-color: #222;
+    color: #fff;
+    font: italic smaller sans-serif;
+    padding: 3px;
+    text-align: center;
+}
+.crop {
+	width: 200px;
+	height: 150px;
+	overflow: hidden;
+}
+ .iconDetails {
+ margin-left:2%;
+float:left; 
+height:40px;
+width:40px;	
+} 
+
+.container2 {
+	width:100%;
+	height:auto;
+	padding:1%;
+}
+
+h4 {
+    margin:0px;
+}
+</style>
+
+  <title>ADIR: Adaptive Diffusion for Image Reconstruction</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=width, initial-scale=1">
+  <link rel="stylesheet" href="ADIR_files/bootstrap.min.css">
+  <script src="ADIR_files/jquery.min.js"></script>
+  <script src="ADIR_files/bootstrap.min.js"></script>
+  <link href="ADIR_files/css.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+
+<!-- Navigation -->
+	<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+	  <div class="container">
+		<div class="navbar-header">
+		  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		  <ul class="nav navbar-nav">
+				<li><a href="index.html">Home</a></li>
+			  <li><a href="SD_SRx4.html">SRx4 - Stable Diffusion</a></li>
+			  <li><a href="GD_SRx4.html">SRx4 - Guided Diffusion</a></li>
+			  <li><a href="GD_SRx8.html">SRx8 - Guided Diffusion</a></li>
+			  <li><a href="Deblurring.html">Deblurring - Guided Diffusion</a></li> 
+			  <li><a href="Editing.html">Text-based Editing - Stable Diffusion</a></li> 
+                   
+				   
+				   
+		  </ul>
+		</div>
+	  </div>
+	</nav>
+  
+  <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+
+            <!-- Entries Column -->
+            <div class="col-md-12">
+                
+                <!-- Main Image -->
+                <h1 style="color:gray;font-family: Arial; font-size:40px"><center>ADIR: Adaptive Diffusion for Image Reconstruction<center></center></center></h1>
+				<h3 style="font-family: Arial; font-size:25px"><center><a href="https://scholar.google.com/citations?user=FZYAWe4AAAAJ">Shady Abu-Hussein</a>, 
+				<a href="https://tirertom.wixsite.com/homepage">Tom Tirer</a>, <a href="https://www.giryes.sites.tau.ac.il/">Raja Giryes</a><center></center></center></h3>
+				<h3 style="font-family: Arial; font-size:25px"><center>Tel Aviv University & Bar Ilan University</center></h3>				
+				
+                <center><button><a style="font-family: Arial; font-size:22px" href="ADIR_files/ADIR.pdf">Paper</a></button>
+				<button><a style="font-family: Arial; font-size:22px" href="https://github.com/shadyabh/ADIR">Code - coming soon</a></button>
+				</center>
+                <div style="margin-top:3%; text-align:justify;">  
+					<h2> Abstract </h2>
+					<p style="font-family: Arial; font-size:15px; align: left">
+						In recent years, denoising diffusion models have demonstrated outstanding image generation performance. The information on natural images captured by these models is useful for many image reconstruction applications, where the task is to restore a clean image from its degraded observations. In this work, we propose a conditional sampling scheme that exploits the prior learned by diffusion models while retaining agreement with the observations. We then combine it with a novel approach for adapting pre-trained diffusion denoising networks to their input. We examine two adaption strategies: the first uses only the degraded image, while the second, which we advocate, is performed using images that are "nearest neighbors" of the degraded image, retrieved from a diverse dataset using an off-the-shelf visual-language model. To evaluate our method, we test it on two state-of-the-art publicly available diffusion models, Stable Diffusion and Guided Diffusion. We show that our proposed `adaptive diffusion for image reconstruction' (ADIR) approach achieves a significant improvement in the super-resolution, deblurring, and text-based editing tasks.
+						</p><br>					   				
+						<center><img src="ADIR_files/teaser.png" alt="teaser" style="width:100%"></center>				  
+					<p style="font-family: Arial; font-size:15px; align: left">
+						
+					</p>				  				  
+                </div>
+            </div> 
+
+			<div class="col-md-12">    
+        <h2> Overview </h2>							
+				<div class="row">
+					<figure>
+					<center><img src="ADIR_files/diagram.svg" alt="GT" style="width:100%">
+					</figure>				
+					</div>
+			</div>
+
+
+			<div class="col-md-12">    
+                <h2 id="GD_SRx4"><a href="GD_SRx4.html">Super Resolution x4 - Guided Diffusion</a></h2>								
+				<div class="row">
+					<figure>
+					<center><img src="ADIR_files/GD_SRx4.png" alt="GT" style="width:100%">
+					</figure>				
+					</div>
+			</div>
+			<div class="col-md-12">    
+                <h2 id="SD_SRx4"><a href="SD_SRx4.html">Super Resolution x4 - Stable Diffusion</a></h2>								
+				<div class="row">
+				  <figure>
+					<center><img src="ADIR_files/SD_SRx4.png" alt="GT" style="width:100%">
+					</figure>
+				  </div>
+			</div>
+			<div class="col-md-12">  			
+                <h2 id="GD_SRx8"><a href="GD_SRx8.html">Super Resolution x8 - Guided Diffusion</a></h2>				
+				<div class="row">
+				  <figure>
+					<center><img src="ADIR_files/GD_SRx8.png" alt="GT" style="width:100%">
+					</figure>
+				  </div>			
+			</div>
+			<div class="col-md-12">  			
+                <h2 id="Deblurring"><a href="Deblurring.html">Deblurring - Guided Diffusion </a></h2>				
+				<div class="row">
+				  <figure>
+					<center><img src="ADIR_files/Deblur.png" alt="GT" style="width:100%">
+					</figure>
+				  </div>
+			</div>
+			<div class="col-md-12">  				
+                <h2 id="Editing"><a href="Editing.html">Text-based Image Editing - Stable Diffusion</a></h2>				
+				<div class="row">
+					<figure>
+					  <center><img src="ADIR_files/SD_editing.png" style="width:80%">					  
+					</figure>
+				  </div>
+			</div>
+			
+			<div class="col-md-12">  				
+               
+			
+        </div>
+
+
+    
+    <!-- /.container -->
+    
+    <!-- Other people may like it too! -->
+     
+    
+
+
+
+</body></html>
