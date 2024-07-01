@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shady Abu-Hussein</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to  CSS file for styling -->
+    <link rel="stylesheet" href="styles.css">
     <style>
-        /* Add custom inline styles here for quick enhancements */
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
@@ -19,12 +18,22 @@
             color: #fff;
             padding: 20px 0;
             text-align: center;
+            position: relative;
+        }
+        
+        header .logo {
+            position: center;
+            max-width: 300px;
+            /*border-radius: 50%;*/
+            margin: -100px auto -80px;
+            display: block;
         }
 
         header h1 {
             font-size: 36px;
             margin: 0;
         }
+        
 
         header h2 {
             font-size: 18px;
@@ -70,12 +79,11 @@
         }
 
         .profile-image {
-            max-width: 200px; /* Adjust the size of your profile image */
+            max-width: 200px;
             border-radius: 50%;
             margin: 0 auto 20px;
             display: block;
         }
-        /* Add this CSS to your existing stylesheet or create a new one */
 .publication-list {
     list-style: none;
     padding: 0;
@@ -94,7 +102,7 @@
     flex: 1;
     margin-right: 10px;
     margin-left: -50px;
-    max-width: 300px; /* Adjust the image width as needed */
+    max-width: 300px;
 }
 
 .publication-image img {
@@ -107,8 +115,6 @@
     flex: 3;
 }
 
-/* Add more CSS styles as needed for further customization */
-
 
         footer {
             text-align: center;
@@ -120,6 +126,7 @@
 </head>
 <body>
     <header>
+        <img src="./Images/start.png" alt="Logo" class="logo"> 
         <h1>Shady Abu-Hussein</h1>
         <h2>PhD Student at Tel Aviv University</h2>
         <nav>
@@ -133,7 +140,7 @@
     </header>
 
     <section id="about" class="container">
-        <img class="profile-image" src="profile_pic.jpg" alt="Shady Abu-Hussein">
+        <img class="profile-image" src="./Images/profile_pic.jpg" alt="Shady Abu-Hussein">
         <h2>About Me</h2>
         <p>Welcome to my personal website! I'm a passionate Ph.D. student at Tel Aviv University, specializing in deep learning, with a focus on inverse problems, generative modeling, signal processing, and computer vision. Additionally, I am a research scientist at Intel Corporation.</p>
     </section>
@@ -147,7 +154,7 @@
     <section id="contact" class="container">
         <h2>Contact Information</h2>
         <p>Email: <a href="mailto:shady.abh@gmail.com">shady.abh@gmail.com</a></p>
-        <p><a href="https://scholar.google.com/citations?user=FZYAWe4AAAAJ" target="_blank">[Google Scholar]</a> <a href="https://www.linkedin.com/in/shady-abu-hussein-919a69104/" target="_blank"> [LinkedIn]</a><a href="https://twitter.com/ShadyAbh" target="_blank"> [Twitter]</a> <a href="https://github.com/shadyabh/" target="_blank"> [GitHub]</a></p>
+        <p><a href="https://scholar.google.com/citations?user=FZYAWe4AAAAJ" target="_blank">[Google Scholar]</a> <a href="https://www.linkedin.com/in/shady-abu-hussein-919a69104/" target="_blank"> [LinkedIn]</a> <a href="https://twitter.com/ShadyAbh" target="_blank"> [Twitter]</a> <a href="https://github.com/shadyabh/" target="_blank"> [GitHub]</a></p>
     </section>
 
 
@@ -157,13 +164,24 @@
 	    <ul class="publication-list">
             <li class="publication-item">
             <div class="publication-image">
+                <img src="./Teasers/DeciMamba.png" alt="DeciMamba", class="responsive-image">
+            </div>
+            <div class="publication-details">
+                <h4>DeciMamba: Exploring the Length Extrapolation Potential of Mamba</h4>
+                <p>Assaf Ben-Kish, Itamar Zimerman, Shady Abu-Hussein, Nadav Cohen, Amir Globerson, Lior Wolf, and Raja Giryes</p>
+                <p>arxiv, 2024 </p>
+                <a href="https://arxiv.org/abs/2406.14528">[Paper]</a> <a href="https://github.com/assafbk/DeciMamba">[Code]</a>
+                </div>
+            </li>
+            <li class="publication-item">
+            <div class="publication-image">
                 <img src="./Teasers/UDPM.png" alt="UDPM", class="responsive-image">
             </div>
             <div class="publication-details">
                 <h4>UDPM: Upsampling Diffusion Probabilistic Models</h4>
                 <p>Shady Abu-Hussein, and Raja Giryes</p>
-                <p>arxiv, 2023 </p>
-                <a href="https://arxiv.org/abs/2305.16269">[Paper]</a><a href="https://github.com/shadyabh/UDPM">[Code - comming soon]</a>
+                <p>arxiv, 2024 </p>
+                <a href="https://arxiv.org/abs/2305.16269">[Paper]</a> <a href="https://github.com/shadyabh/UDPM">[Code]</a>
                 </div>
             </li>
             <li class="publication-item">
@@ -174,7 +192,7 @@
                 <h4>ADIR: Adaptive Diffusion for Image Reconstruction</h4>
                 <p>Shady Abu-Hussein, Tom Tirer and, Raja Giryes</p>
                 <p>arxiv, 2023 </p>
-                <a href="https://arxiv.org/abs/2212.03221">[Paper]</a><a href="https://shadyabh.github.io/ADIR/">[Website]</a><a href="https://github.com/shadyabh/ADIR">[Code - comming soon]</a>
+                <a href="https://arxiv.org/abs/2212.03221">[Paper]</a> <a href="https://shadyabh.github.io/ADIR/">[Website]</a> <a href="https://github.com/shadyabh/ADIR">[Code - comming soon]</a>
                 </div>
             </li>
             <li class="publication-item">
@@ -196,7 +214,7 @@
                 <h4>Unsupervised Domain Generalization by Learning a Bridge Across Domains <t style="color: blue">(Oral)</t></h4>
                 <p>Sivan Harary, Eli Schwartz, Assaf Arbelle, Peter Staar, Shady Abu-Hussein, Elad Amrani, Roei Herzig, Amit Alfassy, Raja Giryes, Hilde Kuehne, Dina Katabi, Kate Saenko, Rogerio Feris, and Leonid Karlinsky</p>
                 <p>CVPR, 2022 </p>
-                <a href="https://arxiv.org/abs/2112.02300">[Paper]</a><a href="https://github.com/leokarlin/BrAD">[Code]</a>
+                <a href="https://arxiv.org/abs/2112.02300">[Paper]</a> <a href="https://github.com/leokarlin/BrAD">[Code]</a>
                 </div>
             </li>
             <li class="publication-item">
@@ -207,7 +225,7 @@
                 <h4>Image Restoration by Deep Projected GSURE</h4>
                 <p>Shady Abu-Hussein, Tom Tirer, Se Young Chun, Yonina C. Eldar, and Raja Giryes</p>
                 <p>WACV, 2022 </p>
-                <a href="https://arxiv.org/abs/2102.02485">[Paper]</a><a href="https://github.com/shadyabh/PGSURE">[Code]</a>
+                <a href="https://arxiv.org/abs/2102.02485">[Paper]</a> <a href="https://github.com/shadyabh/PGSURE">[Code]</a>
                 </div>
             </li>
             <li class="publication-item">
@@ -218,7 +236,7 @@
                 <h4>Correction filter for single image super-resolution: Robustifying off-the-shelf deep super-resolvers <t style="color: blue">(Oral and Best Paper Award Nominee)</t></h4>
                 <p>Shady Abu-Hussein, Tom Tirer, Se Young Chun, Yonina C. Eldar, and Raja Giryes</p>
                 <p>CVPR, 2020 </p>
-                <a href="https://arxiv.org/abs/1912.00157">[Paper]</a><a href="https://github.com/shadyabh/Correction-Filter">[Code]</a>
+                <a href="https://arxiv.org/abs/1912.00157">[Paper]</a> <a href="https://github.com/shadyabh/Correction-Filter">[Code]</a>
                 </div>
             </li>
             <li class="publication-item">
@@ -229,18 +247,16 @@
                 <h4>Image-adaptive GAN based reconstruction</h4>
                 <p>Shady Abu Hussein*, Tom Tirer*, and Raja Giryes</p>
                 <p>AAAI, 2020 </p>
-                <a href="https://arxiv.org/abs/1906.05284">[Paper]</a><a href="https://github.com/shadyabh/IAGAN">[Code]</a>
+                <a href="https://arxiv.org/abs/1906.05284">[Paper]</a> <a href="https://github.com/shadyabh/IAGAN">[Code]</a>
                 </div>
             </li>
         </ul>
 	</section>
-
-
-    <!-- <footer>
-        <div class="container">
-            <p>&copy; 2023 Shady Abu-Hussein</p>
-        </div>
-    </footer> -->
+	
+<footer>
+        <p>&copy; 2024 Shady Abu-Hussein. All rights reserved.</p>
+        <img src="./Images/end.png" alt="Footer Logo" class="footer-logo">
+    </footer>
 </body>
 </html>
 
