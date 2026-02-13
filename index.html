@@ -3,267 +3,735 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shady Abu-Hussein</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Shady Abu-Hussein, PhD - AI Researcher</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+        :root {
+            --primary-dark: #1a1a2e;
+            --primary-accent: #0f4c75;
+            --secondary-accent: #3282b8;
+            --light-bg: #ffffff;
+            --text-primary: #2c3e50;
+            --text-secondary: #546e7a;
+            --card-bg: #ffffff;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #0f4c75 0%, #3282b8 100%);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.18);
+        }
+
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--light-bg);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Header */
         header {
-            background-color: #333;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-accent) 100%);
             color: #fff;
-            padding: 20px 0;
-            text-align: center;
+            padding: 3rem 2rem;
             position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
         }
-        
-        header .logo {
-            position: center;
-            max-width: 300px;
-            /*border-radius: 50%;*/
-            margin: -100px auto -80px;
-            display: block;
+
+        header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+            animation: gridSlide 30s linear infinite;
         }
-        
+
+        @keyframes gridSlide {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(40px, 40px); }
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .logo-container {
+            width: 100%;
+            max-width: 400px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.2s forwards;
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+        }
+
         header h1 {
-            font-size: 36px;
-            margin: 0;
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            margin: 1rem 0 0.5rem;
+            letter-spacing: -0.02em;
+            text-align: center;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.4s forwards;
         }
-        
 
         header h2 {
-            font-size: 18px;
-            margin: 10px 0;
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            font-weight: 400;
+            opacity: 0.9;
+            text-align: center;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.6s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+        }
+
+        /* Navigation */
+        nav {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.8s forwards;
         }
 
         nav ul {
             list-style: none;
-            padding: 0;
-        }
-
-        nav ul li {
-            display: inline;
-            margin-right: 20px;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         nav ul li a {
-            text-decoration: none;
             color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        nav ul li a::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.4s, height 0.4s;
+        }
+
+        nav ul li a:hover::before {
+            width: 300px;
+            height: 300px;
         }
 
         nav ul li a:hover {
-            text-decoration: underline;
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
         }
 
+        /* Container */
         .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 2rem;
         }
+
+        section {
+            background: var(--card-bg);
+            padding: 3rem;
+            margin-bottom: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        section:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-4px);
+        }
+
+        section:nth-child(1) { animation-delay: 0.1s; }
+        section:nth-child(2) { animation-delay: 0.2s; }
+        section:nth-child(3) { animation-delay: 0.3s; }
 
         section h2 {
-            font-size: 24px;
-            margin-top: 0;
+            font-family: 'Crimson Pro', serif;
+            font-size: 2rem;
+            color: var(--primary-accent);
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
         }
 
-        section p {
-            font-size: 16px;
-            line-height: 1.5;
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--gradient-2);
+            border-radius: 2px;
         }
 
+        /* Profile Image */
         .profile-image {
-            max-width: 200px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
-            margin: 0 auto 20px;
+            margin: 0 auto 2rem;
             display: block;
+            object-fit: cover;
+            border: 6px solid var(--secondary-accent);
+            box-shadow: var(--shadow-md);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
+
+        .profile-image:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* About Section */
+        #about p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            text-align: justify;
+            line-height: 1.8;
+        }
+
+        #about p a {
+            color: var(--primary-accent);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        #about p a:hover {
+            border-bottom-color: var(--primary-accent);
+        }
+
+        #about b {
+            color: var(--primary-accent);
+            font-weight: 600;
+        }
+
+        /* Contact Section */
+        #contact p {
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        #contact a {
+            color: var(--secondary-accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        #contact a:hover {
+            background: rgba(50, 130, 184, 0.1);
+            transform: translateX(4px);
+            display: inline-block;
+        }
+
+        /* Publications */
         .publication-list {
             list-style: none;
             padding: 0;
+            counter-reset: publication-counter;
         }
-        .responsive-image {
-            max-width: 100%;
-            height: auto;
-        }
+
         .publication-item {
             display: flex;
-            margin-bottom: 20px;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            position: relative;
+            transition: all 0.3s ease;
+            counter-increment: publication-counter;
+        }
+
+        .publication-item::before {
+            content: counter(publication-counter);
+            position: absolute;
+            left: -2.5rem;
+            top: 0;
+            width: 2rem;
+            height: 2rem;
+            background: var(--gradient-2);
+            color: white;
+            border-radius: 50%;
+            display: flex;
             align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .publication-item:last-child {
+            border-bottom: none;
+        }
+
+        .publication-item:hover {
+            transform: translateX(8px);
         }
 
         .publication-image {
-            flex: 1;
-            margin-right: 10px;
-            margin-left: -50px;
-            max-width: 300px;
+            flex: 0 0 240px;
+            min-width: 240px;
         }
 
         .publication-image img {
             width: 100%;
             height: auto;
-            border-radius: 5px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .publication-image img:hover {
+            box-shadow: var(--shadow-md);
+            transform: scale(1.05);
         }
 
         .publication-details {
-            flex: 3;
+            flex: 1;
+            min-width: 0;
         }
 
+        .publication-details h4 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.25rem;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+            font-weight: 600;
+        }
 
+        .publication-details p {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .publication-details p i {
+            font-style: italic;
+        }
+
+        .publication-details a {
+            display: inline-block;
+            color: var(--secondary-accent);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: 0.4rem 1rem;
+            background: rgba(50, 130, 184, 0.1);
+            border-radius: 6px;
+            margin-right: 0.5rem;
+            margin-top: 0.5rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .publication-details a:hover {
+            background: var(--secondary-accent);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .award-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        /* Footer */
         footer {
+            background: linear-gradient(135deg, #e0e7ee 0%, #d5dce4 100%);
+            color: #2c3e50;
             text-align: center;
-            padding: 10px 0;
-            background-color: #333;
-            color: #fff;
+            padding: 2rem;
+            margin-top: 4rem;
         }
-        
-        footer .footer-logo {
-            position: center;
-                padding: 10px 0;
+
+        footer p {
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-logo {
             max-width: 200px;
-            margin: 0px auto 0px;
-            display: block;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .footer-logo:hover {
+            opacity: 1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                padding: 2rem 1rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            section {
+                padding: 2rem 1.5rem;
+            }
+
+            .publication-item {
+                flex-direction: column;
+                padding-left: 0;
+            }
+
+            .publication-item::before {
+                left: auto;
+                right: 1rem;
+                top: 1rem;
+            }
+
+            .publication-image {
+                flex: none;
+                max-width: 100%;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            nav ul li a {
+                padding: 0.4rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Scroll reveal animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Loading animation */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .loading {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--light-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary-accent);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-accent);
         }
     </style>
 </head>
 <body>
     <header>
-        <img src="./Images/start.png" alt="Logo" class="logo"> 
-        <h1>Shady Abu-Hussein, PhD</h1>
-        <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#publications">Publications</a></li>
-            </ul>
-        </nav>
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="./Images/start.png" alt="Research Logo">
+            </div>
+            <h1>Shady Abu-Hussein, PhD</h1>
+            <h2>Postdoctoral Researcher in Machine Learning | University of Cambridge</h2>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#publications">Publications</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <section id="about" class="container">
-        <img class="profile-image" src="./Images/profile_pic.jpg" alt="Shady Abu-Hussein">
-        <h2>About Me</h2>
-        <p style="text-align: justify;">
-        Welcome to my personal website!<br>
-        <br>
-        I am a Research Scientist at Samsung Research. I received my B.Sc. in Electrical Engineering from Ben-Gurion University of the Negev in 2017, and my Ph.D. (direct track) from the Department of Electrical Engineering at Tel Aviv University in 2024, under the supervision of <a href="https://www.giryes.sites.tau.ac.il/" target="_blank">Prof. Raja Giryes</a>.
-        <br>
-        My primary research interests lie in deep learning, with a particular focus on inverse problems, generative modeling, and self-supervised learning. Recently, I have also developed a strong interest in natural language processing and state-space models.
-        </p>
-    </section>
-    </section>
+    <div class="container">
+        <section id="about">
+            <img class="profile-image" src="./Images/profile_pic.jpg" alt="Shady Abu-Hussein">
+            <h2>About Me</h2>
+            <p>
+                Welcome to my personal website!<br><br>
 
-    <section id="contact" class="container">
-        <h2>Contact Information</h2>
-        <p>Email: <a href="mailto:shady.abh@gmail.com">shady.abh@gmail.com</a></p>
-        <p><a href="https://scholar.google.com/citations?user=FZYAWe4AAAAJ" target="_blank">[Google Scholar]</a> <a href="https://www.linkedin.com/in/shady-abu-hussein-919a69104/" target="_blank"> [LinkedIn]</a> <a href="https://twitter.com/ShadyAbh" target="_blank"> [Twitter]</a> <a href="https://github.com/shadyabh/" target="_blank"> [GitHub]</a></p>
-    </section>
+                I am a Postdoctoral Researcher at the University of Cambridge, working with <a href="https://jmhl.org/" target="_blank">Prof. José Miguel Hernández-Lobato</a>. I received my B.Sc. in Electrical Engineering from Ben-Gurion University of the Negev in 2017, and my Ph.D. (direct track) from the Department of Electrical Engineering at Tel Aviv University in 2024, under the supervision of <a href="https://www.giryes.sites.tau.ac.il/" target="_blank">Prof. Raja Giryes</a>.
+                <br><br>
+                My research focuses on <b>generative modeling, inverse problems, and signal processing</b>. I am particularly interested in developing principled learning frameworks that combine classical signal processing insights with modern deep generative models. My work explores diffusion-based models, adversarial learning, and adaptive training strategies, with the goal of improving robustness, generalization, and interpretability in challenging learning and inference settings.
+                <br><br>
+                More broadly, I aim to design theoretically motivated methods that enable reliable learning under uncertainty and limited or imperfect observations.
+            </p>
+        </section>
 
+        <section id="contact">
+            <h2>Contact Information</h2>
+            <p><strong>Email:</strong> shady dot abh at gmail dot com</p>
+            <p>
+                <a href="https://scholar.google.com/citations?user=FZYAWe4AAAAJ" target="_blank">Google Scholar</a>
+                <a href="https://www.linkedin.com/in/shady-abu-hussein-919a69104/" target="_blank">LinkedIn</a>
+                <a href="https://twitter.com/ShadyAbh" target="_blank">Twitter</a>
+                <a href="https://github.com/shadyabh/" target="_blank">GitHub</a>
+            </p>
+        </section>
 
-	<section id="publications" class="container">
-	    <h2>Publications</h2>
-	    <ol>	    
-	    <ul class="publication-list">
-            <li class="publication-item">
-            <div class="publication-image">
-                <img src="./Teasers/ADIR.png" alt="ADIR", class="responsive-image">
-            </div>
-            <div class="publication-details">
-                <h4>ADIR: Adaptive Diffusion for Image Reconstruction</h4>
-                <p>Shady Abu-Hussein, Tom Tirer and, Raja Giryes</p>
-                <p>BMVC, 2025 </p>
-                <a href="https://arxiv.org/abs/2212.03221">[Paper]</a> <a href="https://shadyabh.github.io/ADIR/">[Website]</a> <a href="https://github.com/shadyabh/ADIR">[Code - comming soon]</a>
-                </div>
-            </li>
-            <li class="publication-item">
-            <div class="publication-image">
-                <img src="./Teasers/DeciMamba.png" alt="DeciMamba", class="responsive-image">
-            </div>
-            <div class="publication-details">
-                <h4>DeciMamba: Exploring the Length Extrapolation Potential of Mamba</h4>
-                <p>Assaf Ben-Kish, Itamar Zimerman, Shady Abu-Hussein, Nadav Cohen, Amir Globerson, Lior Wolf, and Raja Giryes</p>
-                <p>ICLR, 2025 </p>
-                <a href="https://arxiv.org/abs/2406.14528">[Paper]</a> <a href="https://github.com/assafbk/DeciMamba">[Code]</a>
-                </div>
-            </li>
-            <li class="publication-item">
-            <div class="publication-image">
-                <img src="./Teasers/UDPM.png" alt="UDPM", class="responsive-image">
-            </div>
-            <div class="publication-details">
-                <h4>UDPM: Upsampling Diffusion Probabilistic Models</h4>
-                <p>Shady Abu-Hussein, and Raja Giryes</p>
-                <p>NeurIPS, 2024 </p>
-                <a href="https://arxiv.org/abs/2305.16269">[Paper]</a> <a href="https://github.com/shadyabh/UDPM">[Code]</a>
-                </div>
-            </li>
-            <li class="publication-item">
-            <div class="publication-image">
-                <img src="./Teasers/ProCST.png" alt="ProCST", class="responsive-image">
-            </div>
-            <div class="publication-details">
-                <h4>Procst: boosting semantic segmentation using progressive cyclic style-transfer</h4>
-                <p>Shahaf Ettedgui, Shady Abu-Hussein, and Raja Giryes</p>
-                <p>Scientific reports, 2025 </p>
-                <a href="https://arxiv.org/abs/2204.11891">[Paper]</a>
-                </div>
-            </li>
-            <li class="publication-item">
-            <div class="publication-image">
-                <img src="./Teasers/BrAD.png" alt="BrAD", class="responsive-image">
-            </div>
-            <div class="publication-details">
-                <h4>Unsupervised Domain Generalization by Learning a Bridge Across Domains <t style="color: blue">(Oral)</t></h4>
-                <p>Sivan Harary, Eli Schwartz, Assaf Arbelle, Peter Staar, Shady Abu-Hussein, Elad Amrani, Roei Herzig, Amit Alfassy, Raja Giryes, Hilde Kuehne, Dina Katabi, Kate Saenko, Rogerio Feris, and Leonid Karlinsky</p>
-                <p>CVPR, 2022 </p>
-                <a href="https://arxiv.org/abs/2112.02300">[Paper]</a> <a href="https://github.com/leokarlin/BrAD">[Code]</a>
-                </div>
-            </li>
-            <li class="publication-item">
-            <div class="publication-image">
-                <img src="./Teasers/PGSURE.png" alt="pGSURE", class="responsive-image">
-            </div>
-            <div class="publication-details">
-                <h4>Image Restoration by Deep Projected GSURE</h4>
-                <p>Shady Abu-Hussein, Tom Tirer, Se Young Chun, Yonina C. Eldar, and Raja Giryes</p>
-                <p>WACV, 2022 </p>
-                <a href="https://arxiv.org/abs/2102.02485">[Paper]</a> <a href="https://github.com/shadyabh/PGSURE">[Code]</a>
-                </div>
-            </li>
-            <li class="publication-item">
-            <div class="publication-image">
-                <img src="./Teasers/corrFilter.png" alt="corrFilter", class="responsive-image">
-            </div>
-            <div class="publication-details">
-                <h4>Correction filter for single image super-resolution: Robustifying off-the-shelf deep super-resolvers <t style="color: blue">(Oral and Best Paper Award Nominee)</t></h4>
-                <p>Shady Abu-Hussein, Tom Tirer, Se Young Chun, Yonina C. Eldar, and Raja Giryes</p>
-                <p>CVPR, 2020 </p>
-                <a href="https://arxiv.org/abs/1912.00157">[Paper]</a> <a href="https://github.com/shadyabh/Correction-Filter">[Code]</a>
-                </div>
-            </li>
-            <li class="publication-item">
-            <div class="publication-image">
-                <img src="./Teasers/IAGAN.png" alt="IAGAN", class="responsive-image">
-            </div>
-            <div class="publication-details">
-                <h4>Image-adaptive GAN based reconstruction</h4>
-                <p>Shady Abu Hussein*, Tom Tirer*, and Raja Giryes</p>
-                <p>AAAI, 2020 </p>
-                <a href="https://arxiv.org/abs/1906.05284">[Paper]</a> <a href="https://github.com/shadyabh/IAGAN">[Code]</a>
-                </div>
-            </li>
-        </ul>
-	</section>
-	
-<footer>
-        <p>&copy; 2025 Shady Abu-Hussein. All rights reserved.</p>
+        <section id="publications">
+            <h2>Publications</h2>
+            <ul class="publication-list">
+                <li class="publication-item">
+                    <div class="publication-image">
+                        <img src="./Teasers/AdaPS.png" alt="AdaPS Teaser">
+                    </div>
+                    <div class="publication-details">
+                        <h4>Robust Posterior Diffusion-based Sampling via Adaptive Guidance Scale</h4>
+                        <p>Liav Hen, Tom Tirer, Raja Giryes, Shady Abu-Hussein</p>
+                        <p><i>Preprint</i></p>
+                        <a href="#">Paper</a>
+                    </div>
+                </li>
+
+                <li class="publication-item">
+                    <div class="publication-image">
+                        <img src="./Teasers/DDRP.png" alt="DDRP Teaser">
+                    </div>
+                    <div class="publication-details">
+                        <h4>Diffusion Models are Robust Pretrainers</h4>
+                        <p>Mika Yagoda, Shady Abu-Hussein, and Raja Giryes</p>
+                        <p><i>IEEE Signal Processing Letters, 2025</i></p>
+                        <a href="https://ieeexplore.ieee.org/abstract/document/11214201" target="_blank">Paper</a>
+                    </div>
+                </li>
+
+                <li class="publication-item">
+                    <div class="publication-image">
+                        <img src="./Teasers/ADIR.png" alt="ADIR Teaser">
+                    </div>
+                    <div class="publication-details">
+                        <h4>ADIR: Adaptive Diffusion for Image Reconstruction</h4>
+                        <p>Shady Abu-Hussein, Tom Tirer, and Raja Giryes</p>
+                        <p><i>BMVC, 2025</i></p>
+                        <a href="https://arxiv.org/abs/2212.03221" target="_blank">Paper</a>
+                        <a href="https://shadyabh.github.io/ADIR/" target="_blank">Website</a>
+                        <a href="https://github.com/shadyabh/ADIR" target="_blank">Code</a>
+                    </div>
+                </li>
+
+                <li class="publication-item">
+                    <div class="publication-image">
+                        <img src="./Teasers/DeciMamba.png" alt="DeciMamba Teaser">
+                    </div>
+                    <div class="publication-details">
+                        <h4>DeciMamba: Exploring the Length Extrapolation Potential of Mamba</h4>
+                        <p>Assaf Ben-Kish, Itamar Zimerman, Shady Abu-Hussein, Nadav Cohen, Amir Globerson, Lior Wolf, and Raja Giryes</p>
+                        <p><i>ICLR, 2025</i></p>
+                        <a href="https://arxiv.org/abs/2406.14528" target="_blank">Paper</a>
+                        <a href="https://github.com/assafbk/DeciMamba" target="_blank">Code</a>
+                    </div>
+                </li>
+
+                <li class="publication-item">
+                    <div class="publication-image">
+                        <img src="./Teasers/UDPM.png" alt="UDPM Teaser">
+                    </div>
+                    <div class="publication-details">
+                        <h4>UDPM: Upsampling Diffusion Probabilistic Models</h4>
+                        <p>Shady Abu-Hussein, and Raja Giryes</p>
+                        <p><i>NeurIPS, 2024</i></p>
+                        <a href="https://arxiv.org/abs/2305.16269" target="_blank">Paper</a>
+                        <a href="https://github.com/shadyabh/UDPM" target="_blank">Code</a>
+                    </div>
+                </li>
+
+                <li class="publication-item">
+                    <div class="publication-image">
+                        <img src="./Teasers/ProCST.png" alt="ProCST Teaser">
+                    </div>
+                    <div class="publication-details">
+                        <h4>Procst: Boosting Semantic Segmentation Using Progressive Cyclic Style-Transfer</h4>
+                        <p>Shahaf Ettedgui, Shady Abu-Hussein, and Raja Giryes</p>
+                        <p><i>Scientific Reports, 2025</i></p>
+                        <a href="https://arxiv.org/abs/2204.11891" target="_blank">Paper</a>
+                    </div>
+                </li>
+
+                <li class="publication-item">
+                    <div class="publication-image">
+                        <img src="./Teasers/BrAD.png" alt="BrAD Teaser">
+                    </div>
+                    <div class="publication-details">
+                        <h4>Unsupervised Domain Generalization by Learning a Bridge Across Domains</h4>
+                        <span class="award-badge">Oral Presentation</span>
+                        <p>Sivan Harary, Eli Schwartz, Assaf Arbelle, Peter Staar, Shady Abu-Hussein, Elad Amrani, Roei Herzig, Amit Alfassy, Raja Giryes, Hilde Kuehne, Dina Katabi, Kate Saenko, Rogerio Feris, and Leonid Karlinsky</p>
+                        <p><i>CVPR, 2022</i></p>
+                        <a href="https://arxiv.org/abs/2112.02300" target="_blank">Paper</a>
+                        <a href="https://github.com/leokarlin/BrAD" target="_blank">Code</a>
+                    </div>
+                </li>
+
+                <li class="publication-item">
+                    <div class="publication-image">
+                        <img src="./Teasers/PGSURE.png" alt="pGSURE Teaser">
+                    </div>
+                    <div class="publication-details">
+                        <h4>Image Restoration by Deep Projected GSURE</h4>
+                        <p>Shady Abu-Hussein, Tom Tirer, Se Young Chun, Yonina C. Eldar, and Raja Giryes</p>
+                        <p><i>WACV, 2022</i></p>
+                        <a href="https://arxiv.org/abs/2102.02485" target="_blank">Paper</a>
+                        <a href="https://github.com/shadyabh/PGSURE" target="_blank">Code</a>
+                    </div>
+                </li>
+
+                <li class="publication-item">
+                    <div class="publication-image">
+                        <img src="./Teasers/corrFilter.png" alt="Correction Filter Teaser">
+                    </div>
+                    <div class="publication-details">
+                        <h4>Correction Filter for Single Image Super-Resolution: Robustifying Off-the-Shelf Deep Super-Resolvers</h4>
+                        <span class="award-badge">Oral & Best Paper Nominee</span>
+                        <p>Shady Abu-Hussein, Tom Tirer, Se Young Chun, Yonina C. Eldar, and Raja Giryes</p>
+                        <p><i>CVPR, 2020</i></p>
+                        <a href="https://arxiv.org/abs/1912.00157" target="_blank">Paper</a>
+                        <a href="https://github.com/shadyabh/Correction-Filter" target="_blank">Code</a>
+                    </div>
+                </li>
+
+                <li class="publication-item">
+                    <div class="publication-image">
+                        <img src="./Teasers/IAGAN.png" alt="IAGAN Teaser">
+                    </div>
+                    <div class="publication-details">
+                        <h4>Image-Adaptive GAN Based Reconstruction</h4>
+                        <p>Shady Abu Hussein*, Tom Tirer*, and Raja Giryes</p>
+                        <p><i>AAAI, 2020</i></p>
+                        <a href="https://arxiv.org/abs/1906.05284" target="_blank">Paper</a>
+                        <a href="https://github.com/shadyabh/IAGAN" target="_blank">Code</a>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; <span id="current-year"></span> Shady Abu-Hussein. All rights reserved.</p>
         <img src="./Images/end.png" alt="Footer Logo" class="footer-logo">
     </footer>
+
+    <script>
+        // Set current year automatically
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Smooth scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all publication items
+        document.querySelectorAll('.publication-item').forEach((item, index) => {
+            item.classList.add('reveal');
+            item.style.animationDelay = `${index * 0.1}s`;
+            observer.observe(item);
+        });
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
-
